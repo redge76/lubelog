@@ -16,6 +16,7 @@ namespace CarCareTracker.Middleware
         private IHttpContextAccessor _httpContext;
         private IDataProtector _dataProtector;
         private ILoginLogic _loginLogic;
+        private ILogger<Authen> _logger;
         private bool enableAuth;
         public Authen(
             IOptionsMonitor<AuthenticationSchemeOptions> options,
@@ -30,6 +31,7 @@ namespace CarCareTracker.Middleware
             _dataProtector = securityProvider.CreateProtector("login");
             _loginLogic = loginLogic;
             enableAuth = bool.Parse(configuration["EnableAuth"]);
+            _logger = logger.CreateLogger<Authen>();
         }
         protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
         {
@@ -141,6 +143,7 @@ namespace CarCareTracker.Middleware
                     }
                     catch (Exception ex)
                     {
+                        _logger.LogError(ex, "Auth Error, probably not an issue as long as it doesn't affect login.");
                         return AuthenticateResult.Fail("Corrupted credentials");
                     }
                 }
