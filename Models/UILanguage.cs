@@ -1,6 +1,4 @@
-﻿using AspNetCore;
-
-namespace CarCareTracker.Models
+﻿namespace CarCareTracker.Models
 {
     public class UILanguage
     {
@@ -30,5 +28,10 @@ namespace CarCareTracker.Models
         public string LicensePlate { get; set; } = "License Plate";
         public string ElectricVehicle { get; set; } = "Electric Vehicle";
         public string PictureUpload { get; set; } = "Upload a picture(optional)";
+        //Settings Page
+        public string DarkMode { get; set; } = "Dark Mode";
+        public string EnableCsvImports { get; set; } = "Enable CSV Imports";
+        public string UseImperialCalculation { get; set; } = "Use Imperial Calculation for Fuel Economy Calculations(MPG)";
+
     }
 }
