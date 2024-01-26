@@ -7,3 +7,5 @@ data/cartracker.db
 wwwroot/documents/
 wwwroot/temp/
 wwwroot/imports/
+CarCareTracker.csproj.user
+Properties/launchSettings.json
