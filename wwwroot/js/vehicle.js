@@ -354,3 +354,16 @@ function restoreScrollPosition() {
     $(".vehicleDetailTabContainer").scrollTop(scrollPosition);
     scrollPosition = 0;
 }
+function odometerToHours() {
+    //check if the vehicle uses engine hours.
+    var useEngineHours = GetVehicleId().useEngineHours;
+    if (useEngineHours) {
+        if ($(".odometer").length > 0) {
+            $(".odometer").text("Engine Hours");
+        }
+        if ($(".odometer-placeholder").length > 0) {
+            var placeholderText = $(".odometer-placeholder").attr("placeholder").replace("Odometer reading", "Engine hours");
+            $(".odometer-placeholder").attr("placeholder", placeholderText);
+        }
+    }
+}

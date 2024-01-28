@@ -43,8 +43,8 @@
                         <input type="text" id="gasRecordDate" placeholder="Date refueled" class="form-control" value="@Model.GasRecord.Date">
                         <span class="input-group-text"><i class="bi bi-calendar-event"></i></span>
                     </div>
-                    <label for="gasRecordMileage">Odometer Reading(@distanceUnit)</label>
-                    <input type="number" id="gasRecordMileage" class="form-control" placeholder="Odometer reading when refueled" value="@(isNew ? "" : Model.GasRecord.Mileage)">
+                    <label for="gasRecordMileage" class="odometer">Odometer Reading(@distanceUnit)</label>
+                    <input type="number" id="gasRecordMileage" class="form-control odometer-placeholder" placeholder="Odometer reading when refueled" value="@(isNew ? "" : Model.GasRecord.Mileage)">
                     <label for="gasRecordGallons">Fuel Consumption(@(consumptionUnit))</label>
                     <input type="text" id="gasRecordGallons" class="form-control" placeholder="Amount of gas refueled" value="@(isNew ? "" : Model.GasRecord.Gallons)">
                     <div class="form-check form-switch">
@@ -113,6 +113,7 @@
 <script>
     var uploadedFiles = [];
     getUploadedFilesFromModel();
+    odometerToHours();
     function getUploadedFilesFromModel() {
     @foreach (UploadedFiles filesUploaded in Model.GasRecord.Files)
     {

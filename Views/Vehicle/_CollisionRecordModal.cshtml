@@ -17,8 +17,8 @@
                         <input type="text" id="collisionRecordDate" class="form-control" placeholder="Date repair was performed" value="@Model.Date">
                         <span class="input-group-text"><i class="bi bi-calendar-event"></i></span>
                     </div>
-                    <label for="collisionRecordMileage">Odometer</label>
-                    <input type="number" id="collisionRecordMileage" class="form-control" placeholder="Odometer reading when repaired" value="@(isNew ? "" : Model.Mileage)">
+                    <label for="collisionRecordMileage" class="odometer">Odometer</label>
+                    <input type="number" id="collisionRecordMileage" class="form-control odometer-placeholder" placeholder="Odometer reading when repaired" value="@(isNew ? "" : Model.Mileage)">
                     <label for="collisionRecordDescription">Description</label>
                     <input type="text" id="collisionRecordDescription" class="form-control" placeholder="Description of item(s) repaired(i.e. Alternator)" value="@Model.Description">
                     <label for="collisionRecordCost">Cost</label>
@@ -79,6 +79,7 @@
     var uploadedFiles = [];
     var selectedSupplies = [];
     getUploadedFilesFromModel();
+    odometerToHours();
     function getUploadedFilesFromModel() {
     @foreach (UploadedFiles filesUploaded in Model.Files)
     {

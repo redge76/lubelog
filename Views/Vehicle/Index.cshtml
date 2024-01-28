@@ -160,7 +160,11 @@
 </div>
 <script>
     function GetVehicleId() {
-        return { vehicleId: @Model.Id};
+        return { 
+            vehicleId: @Model.Id, 
+            useKwh: @Model.IsElectric.ToString().ToLower(),
+            useEngineHours: @Model.UseHours.ToString().ToLower()
+        };
     }
     function GetDefaultTab() {
         return { tab: "@userConfig.DefaultTab" };

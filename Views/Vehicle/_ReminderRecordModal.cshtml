@@ -25,10 +25,10 @@
                     </div>
                     <div class="form-check form-check-inline">                        
                         <input class="form-check-input" type="radio" name="reminderMetricOptions" id="reminderMetricOdometer" value="@(ReminderMetric.Odometer)" checked="@(Model.Metric == ReminderMetric.Odometer)">
-                        <label class="form-check-label" for="reminderMetricOdometer">Odometer</label>
+                        <label class="form-check-label odometer" for="reminderMetricOdometer">Odometer</label>
                     </div>     
                     <div class="input-group">
-                        <input type="number" id="reminderMileage" class="form-control" placeholder="Future Odometer Reading" value="@(isNew ? "" : Model.Mileage)">
+                        <input type="number" id="reminderMileage" class="form-control odometer-placeholder" placeholder="Future Odometer reading" value="@(isNew ? "" : Model.Mileage)">
                         <div class="input-group-text">
                             <button type="button" class="btn btn-sm btn-primary" onclick="appendMileageToOdometer(500)">+500</button>
                         </div>
@@ -45,7 +45,7 @@
                         <input class="form-check-input" type="checkbox" onChange="enableRecurring()" role="switch" id="reminderIsRecurring" checked="@Model.IsRecurring">
                         <label class="form-check-label" for="reminderIsRecurring">Is Recurring</label>
                     </div>
-                    <label for="reminderRecurringMileage">Odometer</label>
+                    <label for="reminderRecurringMileage" class="odometer">Odometer</label>
                     <select class="form-select" id="reminderRecurringMileage" @(Model.IsRecurring ? "" : "disabled")>
                         <!option value="FiftyMiles" @(Model.ReminderMileageInterval == ReminderMileageInterval.FiftyMiles ? "selected" : "")>50 mi. / Km</!option>
                         <!option value="OneHundredMiles" @(Model.ReminderMileageInterval == ReminderMileageInterval.OneHundredMiles ? "selected" : "")>100 mi. / Km</!option>
@@ -95,6 +95,7 @@
     }
 </div>
 <script>
+    odometerToHours();
     function getReminderRecordModelData() {
         return { id: @Model.Id}
     }
