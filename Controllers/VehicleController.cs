@@ -1002,7 +1002,8 @@ namespace CarCareTracker.Controllers
                 Description = x.Description,
                 Notes = x.Notes,
                 Cost = x.Cost,
-                DataType = ImportMode.ServiceRecord
+                DataType = ImportMode.ServiceRecord,
+                Files = x.Files
             }));
             //repair records
             reportData.AddRange(repairRecords.Select(x => new GenericReportModel
@@ -1012,7 +1013,8 @@ namespace CarCareTracker.Controllers
                 Description = x.Description,
                 Notes = x.Notes,
                 Cost = x.Cost,
-                DataType = ImportMode.RepairRecord
+                DataType = ImportMode.RepairRecord,
+                Files = x.Files
             }));
             reportData.AddRange(upgradeRecords.Select(x => new GenericReportModel
             {
@@ -1021,7 +1023,8 @@ namespace CarCareTracker.Controllers
                 Description = x.Description,
                 Notes = x.Notes,
                 Cost = x.Cost,
-                DataType = ImportMode.UpgradeRecord
+                DataType = ImportMode.UpgradeRecord,
+                Files = x.Files
             }));
             reportData.AddRange(taxRecords.Select(x => new GenericReportModel
             {
@@ -1030,7 +1033,8 @@ namespace CarCareTracker.Controllers
                 Description = x.Description,
                 Notes = x.Notes,
                 Cost = x.Cost,
-                DataType = ImportMode.TaxRecord
+                DataType = ImportMode.TaxRecord,
+                Files = x.Files
             }));
             vehicleHistory.VehicleHistory = reportData.OrderBy(x => x.Date).ThenBy(x => x.Odometer).ToList();
             return PartialView("_VehicleHistory", vehicleHistory);

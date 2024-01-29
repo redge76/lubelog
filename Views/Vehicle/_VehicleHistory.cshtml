@@ -22,6 +22,7 @@
     {
         fuelEconomyUnit = useMPG ? "mpg" : "l/100km";
     }
+    var uploadedFiles = Model.VehicleHistory.Where(x => x.Files.Any())?.Select(x => x.Files).ToList();
 }
 @model VehicleHistoryViewModel
 <div class="vehicleDetailTabContainer">
@@ -106,4 +107,25 @@
             </table>
         </div>
     </div>
+    @if (uploadedFiles?.Any() ?? false)
+    {
+        <hr />
+        <div class="row">
+            <div class="d-flex mb-2">
+                <span class="display-6">Attachments</span>
+            </div>
+            @foreach (List<UploadedFiles> files in uploadedFiles)
+            {
+                foreach (UploadedFiles file in files)
+                {
+                    if (file.Name.EndsWith(".png") || file.Name.EndsWith(".jpg") || file.Name.EndsWith(".jpeg"))
+                    {
+                        <div class="col-12">
+                            <img src="@file.Location" />
+                        </div>
+                    }
+                }
+            }
+        </div>
+    }
 </div>
